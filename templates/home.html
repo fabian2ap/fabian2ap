@@ -202,6 +202,7 @@
             height = canvas.height = window.innerHeight;
         }
 
+
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -222,12 +223,26 @@
             }
 
             draw() {
+                const angle = Math.atan2(this.vy, this.vx);
+
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(angle);
+
+                // Satellite Body
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.globalAlpha = 0.6;
+                ctx.arc(0, 0, 2, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.globalAlpha = 1;
+
+                // Solar Panels (Starlink vibes)
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                // Left Panel
+                ctx.fillRect(-8, -1, 6, 2);
+                // Right Panel
+                ctx.fillRect(2, -1, 6, 2);
+
+                ctx.restore();
             }
         }
 
@@ -246,7 +261,7 @@
                 p.draw();
             });
 
-            // Draw connections
+            // Draw connections (Starlink Mesh Network)
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -255,7 +270,7 @@
 
                     if (dist < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 113, 227, ${0.15 * (1 - dist / connectionDistance)})`; // Very subtle blue connections
+                        ctx.strokeStyle = `rgba(0, 113, 227, ${0.15 * (1 - dist / connectionDistance)})`; // Laser links
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
