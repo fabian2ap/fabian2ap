@@ -195,6 +195,24 @@
     </footer>
 
     <script>
+        let scrollProgress = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            // Calibrate so full zoom happens after scrolling past half the viewport
+            const heroHeight = window.innerHeight * 0.8;
+            scrollProgress = Math.min(scrollTop / heroHeight, 1);
+
+            // Fade Hero Text
+            const heroText = document.querySelectorAll('.hero h1, .hero p, .hero .cta-button');
+            heroText.forEach(el => {
+                const opacity = 1 - (scrollProgress * 2.5);
+                el.style.opacity = Math.max(opacity, 0);
+                el.style.transform = `translateY(${scrollProgress * 100}px)`; // Parallax down
+                el.style.pointerEvents = opacity <= 0.1 ? 'none' : 'auto';
+            });
+        });
+
         // Cloud Integration / Apigee Network Animation
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
@@ -202,16 +220,15 @@
         let particles = [];
 
         // Configuration
-        const particleCount = 50; // Optimized count
+        const particleCount = 50;
         const connectionDistance = 160;
         const moveSpeed = 0.4;
-        const colors = ['#0071e3', '#ffffff', '#86868b']; // Updated Apple Blue
+        const colors = ['#0071e3', '#ffffff', '#86868b'];
 
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         }
-
 
         class Particle {
             constructor() {
@@ -245,11 +262,9 @@
                 ctx.arc(0, 0, 2, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Solar Panels (Starlink vibes)
+                // Solar Panels
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                // Left Panel
                 ctx.fillRect(-8, -1, 6, 2);
-                // Right Panel
                 ctx.fillRect(2, -1, 6, 2);
 
                 ctx.restore();
@@ -266,35 +281,38 @@
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            // Draw Earth
-            const earthRadius = 80;
-            const earthX = width < 768 ? width * 0.5 : width * 0.15; // Centered on mobile, top-left on desktop
-            const earthY = width < 768 ? height * 0.2 : height * 0.25;
+            // Draw Earth - Dynamic Zoom & Center
+            const baseRadius = width < 768 ? 60 : 80;
+            const zoomMultiplier = width < 768 ? 150 : 300;
+            const currentRadius = baseRadius + (scrollProgress * zoomMultiplier);
 
-            const gradient = ctx.createRadialGradient(earthX, earthY, earthRadius * 0.3, earthX, earthY, earthRadius);
-            gradient.addColorStop(0, '#1a4f8a'); // Deep Ocean Blue
+            const earthX = width / 2;
+            const earthY = height / 2;
+
+            const gradient = ctx.createRadialGradient(earthX, earthY, currentRadius * 0.3, earthX, earthY, currentRadius);
+            gradient.addColorStop(0, '#1a4f8a');
             gradient.addColorStop(0.5, '#0d2b4d');
-            gradient.addColorStop(1, '#000000'); // Fade to black space
+            gradient.addColorStop(1, '#000000');
 
             ctx.beginPath();
-            ctx.arc(earthX, earthY, earthRadius, 0, Math.PI * 2);
+            ctx.arc(earthX, earthY, currentRadius, 0, Math.PI * 2);
             ctx.fillStyle = gradient;
             ctx.fill();
 
             // Earth glow
-            ctx.shadowBlur = 30;
+            ctx.shadowBlur = 30 + (scrollProgress * 20);
             ctx.shadowColor = '#2997ff';
             ctx.strokeStyle = '#2962ff';
             ctx.lineWidth = 1.5;
             ctx.stroke();
-            ctx.shadowBlur = 0; // Reset
+            ctx.shadowBlur = 0;
 
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
 
-            // Draw connections (Starlink Mesh Network + Earth Links)
+            // Draw connections
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
 
@@ -315,14 +333,16 @@
                     }
                 }
 
-                // Connect to Earth (Downlinks)
+                // Connect to Earth
                 const dxEarth = p.x - earthX;
                 const dyEarth = p.y - earthY;
                 const distEarth = Math.sqrt(dxEarth * dxEarth + dyEarth * dyEarth);
 
-                if (distEarth < 250 && distEarth > earthRadius) {
+                if (distEarth < (currentRadius + 300) && distEarth > currentRadius) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(41, 151, 255, ${0.1 * (1 - (distEarth - earthRadius) / 200)})`; // Fading downlink
+                    // Fade based on distance to Earth surface
+                    const alpha = 0.15 * (1 - (distEarth - currentRadius) / 300);
+                    ctx.strokeStyle = `rgba(41, 151, 255, ${alpha})`;
                     ctx.lineWidth = 0.8;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(earthX, earthY);
@@ -338,7 +358,7 @@
         initParticles();
         animate();
 
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -348,7 +368,7 @@
             });
         });
 
-        // Simple fade-in on scroll (Intersection Observer)
+        // Intersection Observer
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
