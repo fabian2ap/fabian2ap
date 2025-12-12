@@ -266,26 +266,67 @@
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
+            // Draw Earth
+            const earthRadius = 60;
+            const earthX = width / 2;
+            const earthY = height / 2;
+
+            const gradient = ctx.createRadialGradient(earthX, earthY, earthRadius * 0.3, earthX, earthY, earthRadius);
+            gradient.addColorStop(0, '#1a4f8a'); // Deep Ocean Blue
+            gradient.addColorStop(0.5, '#0d2b4d');
+            gradient.addColorStop(1, '#000000'); // Fade to black space
+
+            ctx.beginPath();
+            ctx.arc(earthX, earthY, earthRadius, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Earth glow
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = '#2997ff';
+            ctx.strokeStyle = '#2962ff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.shadowBlur = 0; // Reset
+
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
 
-            // Draw connections (Starlink Mesh Network)
+            // Draw connections (Starlink Mesh Network + Earth Links)
             for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                // Connect to other satellites
                 for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     if (dist < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 113, 227, ${0.15 * (1 - dist / connectionDistance)})`; // Laser links
+                        ctx.strokeStyle = `rgba(0, 113, 227, ${0.15 * (1 - dist / connectionDistance)})`;
                         ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
                     }
+                }
+
+                // Connect to Earth (Downlinks)
+                const dxEarth = p.x - earthX;
+                const dyEarth = p.y - earthY;
+                const distEarth = Math.sqrt(dxEarth * dxEarth + dyEarth * dyEarth);
+
+                if (distEarth < 250 && distEarth > earthRadius) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(41, 151, 255, ${0.1 * (1 - (distEarth - earthRadius) / 200)})`; // Fading downlink
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(earthX, earthY);
+                    ctx.stroke();
                 }
             }
 
