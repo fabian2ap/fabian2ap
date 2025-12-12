@@ -278,6 +278,34 @@
             }
         }
 
+        let cityLights = [];
+
+        function initCityLights() {
+            cityLights = [];
+            // Helper to add clusters
+            const addCluster = (baseX, baseY, count, spread) => {
+                for (let i = 0; i < count; i++) {
+                    cityLights.push({
+                        x: baseX + (Math.random() - 0.5) * spread,
+                        y: baseY + (Math.random() - 0.5) * spread,
+                        size: Math.random() * 1.5 + 0.5,
+                        alpha: Math.random() * 0.5 + 0.5
+                    });
+                }
+            };
+
+            // approximate Americas shape on the sphere (normalized -1 to 1)
+            // North America
+            addCluster(-0.15, -0.45, 12, 0.25); // East Coast / Midwest
+            addCluster(-0.35, -0.40, 8, 0.2);  // West Coast
+            addCluster(-0.25, -0.25, 5, 0.15); // Mexico
+
+            // South America
+            addCluster(0.1, 0.1, 8, 0.2); // North SA
+            addCluster(0.25, 0.3, 10, 0.25); // Brazil
+            addCluster(0.05, 0.5, 6, 0.15); // Southern Cone (Chile/Arg)
+        }
+
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
@@ -298,6 +326,28 @@
             ctx.arc(earthX, earthY, currentRadius, 0, Math.PI * 2);
             ctx.fillStyle = gradient;
             ctx.fill();
+
+            // Draw City Lights (Americas)
+            if (scrollProgress > 0.05) {
+                const lightsOpacity = Math.min((scrollProgress - 0.05) * 2, 1); // Fade in
+                ctx.save();
+                ctx.translate(earthX, earthY);
+
+                cityLights.forEach(light => {
+                    // Only draw if within current radius visual bounds
+                    // Calculate visual position
+                    const lx = light.x * currentRadius;
+                    const ly = light.y * currentRadius;
+
+                    // Simple rotation simulation based on scroll? (Optional, let's keep it static facing user for now)
+
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(255, 230, 150, ${light.alpha * lightsOpacity})`; // Gold/warm lights
+                    ctx.arc(lx, ly, light.size * (currentRadius / 100), 0, Math.PI * 2); // Scale lights with earth
+                    ctx.fill();
+                });
+                ctx.restore();
+            }
 
             // Earth glow
             ctx.shadowBlur = 30 + (scrollProgress * 20);
@@ -356,6 +406,7 @@
         window.addEventListener('resize', resize);
         resize();
         initParticles();
+        initCityLights();
         animate();
 
         // Smooth scroll
