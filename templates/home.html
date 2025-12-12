@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabian Arce Pereira - Personal Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='landing-7/images/favicon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="nav-title">Fabian Arce Pereira</a>
+            <div class="nav-links">
+                <a href="#about">Sobre mí</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#experience">Experiencia</a>
+                <a href="#contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <h1>Fabian Arce Pereira</h1>
+        <p>Consultor Integración | Digital Enablers</p>
+        <a href="#projects" class="cta-button">Ver Proyectos</a>
+    </header>
+
+    <section class="bento-section" id="about">
+        <div class="section-title">Mi Mundo</div>
+        <div class="bento-grid">
+            <!-- About Me - Large -->
+            <div class="bento-item item-large"
+                style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('{{ url_for('static', filename='landing-7/images/about-me-bg.png') }}'); background-size: cover; background-position: center;">
+                <div style="margin-top: auto;">
+                    <h3>Sobre Mí</h3>
+                    <p style="color: #f5f5f7;">Soy un apasionado desarrollador de software con sede en Chile.</p>
+                </div>
+            </div>
+
+            <!-- Tech Stack - Medium -->
+            <div class="bento-item item-medium">
+                <i class="fa-solid fa-certificate icon"></i>
+                <div>
+                    <h3>Certificaciones & Cloud</h3>
+                    <ul
+                        style="list-style: none; padding: 0; margin: 0; font-size: 15px; opacity: 0.9; line-height: 1.6;">
+                        <li><i class="fa-brands fa-google" style="margin-right: 8px;"></i> Google Cloud Generic - Link
+                            Associate Cloud Engineer</li>
+                        <li><i class="fa-brands fa-microsoft" style="margin-right: 8px;"></i> Microsoft Azure
+                            Fundamentals</li>
+                        <li><i class="fa-solid fa-cloud" style="margin-right: 8px;"></i> Oracle Cloud Infrastructure
+                            (OCI) x3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- LinkedIn - Small -->
+            <a href="https://www.linkedin.com/in/fabian-arce-pereira/" target="_blank" class="bento-item item-small"
+                style="text-decoration: none; color: inherit;">
+                <i class="fa-brands fa-linkedin icon" style="color: #0077b5;"></i>
+                <div>
+                    <h3>LinkedIn</h3>
+                    <p>Conectemos</p>
+                </div>
+            </a>
+
+            <!-- GitHub - Small -->
+            <a href="https://github.com/fabian2ap" target="_blank" class="bento-item item-small"
+                style="text-decoration: none; color: inherit;">
+                <i class="fa-brands fa-github icon"></i>
+                <div>
+                    <h3>GitHub</h3>
+                    <p>Mi Código</p>
+                </div>
+            </a>
+
+            <!-- Experience - Medium -->
+            <div class="bento-item item-medium" id="experience">
+                <i class="fa-solid fa-briefcase icon"></i>
+                <div>
+                    <h3>Experiencia</h3>
+                    <p>Trabajando en proyectos desafiantes, integrando soluciones en la nube y optimizando procesos en
+                        empresas líderes.</p>
+                </div>
+            </div>
+
+            <!-- Projects Select - Large -->
+            <div class="bento-item item-large" id="projects" style="display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div>
+                        <h3 style="margin-bottom: 0;">Proyectos Destacados</h3>
+                        <p style="font-size: 14px; opacity: 0.6; margin-top: 5px;">SaaS & Desarrollo Web</p>
+                    </div>
+                    <i class="fa-solid fa-code icon" style="font-size: 24px;"></i>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 15px; flex-grow: 1;">
+
+                    <!-- AgendaNet Plus -->
+                    <a href="https://agendanetplus.cl/" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block; flex-grow: 1;">
+                        <div class="project-card-hover"
+                            style="background: linear-gradient(135deg, rgba(41, 151, 255, 0.2), rgba(41, 151, 255, 0.05)); border: 1px solid rgba(41, 151, 255, 0.3); padding: 25px; border-radius: 20px; position: relative; overflow: hidden; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                            <div
+                                style="position: absolute; top: 0; right: 0; background: #2997ff; color: white; font-size: 11px; padding: 6px 14px; border-bottom-left-radius: 12px; font-weight: bold; letter-spacing: 0.5px;">
+                                SaaS STAR</div>
+                            <h4 style="margin: 0; font-size: 24px; color: #fff; margin-bottom: 8px;">AgendaNet Plus</h4>
+                            <p style="font-size: 15px; opacity: 0.9; margin: 0; line-height: 1.4;">La plataforma
+                                definitiva para gestión de agendas. Potencia tu negocio con nuestro SaaS inteligente.
+                            </p>
+                        </div>
+                    </a>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; flex-grow: 1;">
+                        <!-- Wellnatics -->
+                        <a href="https://www.wellnatics.cl/" target="_blank"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="project-card-hover"
+                                style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; height: 100%; border: 1px solid rgba(255,255,255,0.05); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                                <h4 style="margin: 0; font-size: 18px; color: #fff; margin-bottom: 5px;">Wellnatics</h4>
+                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">Bienestar Integral & Salud.</p>
+                            </div>
+                        </a>
+
+                        <!-- Pepona Look -->
+                        <a href="https://www.peponalook.cl/" target="_blank"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="project-card-hover"
+                                style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; height: 100%; border: 1px solid rgba(255,255,255,0.05); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                                <h4 style="margin: 0; font-size: 18px; color: #fff; margin-bottom: 5px;">Pepona Look
+                                </h4>
+                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">E-commerce de Moda.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-secondary); font-size: 12px;">
+        <p>&copy; 2025 Fabian Arce Pereira. Designed in Chile.</p>
+    </footer>
+
+    <script>
+        // Cloud Integration / Apigee Network Animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        // Configuration
+        const particleCount = 60;
+        const connectionDistance = 150;
+        const moveSpeed = 0.5;
+        const colors = ['#2997ff', '#ffffff', '#86868b']; // Blue (Cloud), White, Grey
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * moveSpeed;
+                this.vy = (Math.random() - 0.5) * moveSpeed;
+                this.size = Math.random() * 2 + 1;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(41, 151, 255, ${1 - dist / connectionDistance})`; // Blue fading
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+
+                        // Occasional Data Pulse (Apigee Traffic)
+                        if (Math.random() < 0.005) {
+                            ctx.fillStyle = '#ffffff';
+                            const pulseX = particles[i].x + (particles[j].x - particles[i].x) * 0.5;
+                            const pulseY = particles[i].y + (particles[j].y - particles[i].y) * 0.5;
+                            ctx.beginPath();
+                            ctx.arc(pulseX, pulseY, 2, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        initParticles();
+        animate();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple fade-in on scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
