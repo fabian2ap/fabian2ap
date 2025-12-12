@@ -27,56 +27,63 @@
     <header class="hero">
         <canvas id="hero-canvas"></canvas>
         <h1>Fabian Arce Pereira</h1>
-        <p>Consultor Integración | Digital Enablers</p>
+        <p>Consultor de Integración & Arquitecto Cloud</p>
         <a href="#projects" class="cta-button">Ver Proyectos</a>
     </header>
 
     <section class="bento-section" id="about">
-        <div class="section-title">Mi Mundo</div>
+        <div class="section-title">Mi Ecosistema</div>
         <div class="bento-grid">
             <!-- About Me - Large -->
             <div class="bento-item item-large"
-                style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('{{ url_for('static', filename='landing-7/images/about-me-bg.png') }}'); background-size: cover; background-position: center;">
+                style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('{{ url_for('static', filename='landing-7/images/about-me-bg.png') }}'); background-size: cover; background-position: center;">
                 <div style="margin-top: auto;">
                     <h3>Sobre Mí</h3>
-                    <p style="color: #f5f5f7;">Soy un apasionado desarrollador de software con sede en Chile.</p>
+                    <p style="color: #f5f5f7; font-weight: 500;">Impulsando la transformación digital a través de
+                        arquitecturas robustas y soluciones Cloud escalables.</p>
                 </div>
             </div>
 
             <!-- Tech Stack - Medium -->
             <div class="bento-item item-medium">
-                <i class="fa-solid fa-certificate icon"></i>
+                <i class="fa-solid fa-layer-group icon"></i>
                 <div>
-                    <h3>Certificaciones & Cloud</h3>
-                    <ul
-                        style="list-style: none; padding: 0; margin: 0; font-size: 15px; opacity: 0.9; line-height: 1.6;">
-                        <li><i class="fa-brands fa-google" style="margin-right: 8px;"></i> Google Cloud Generic - Link
-                            Associate Cloud Engineer</li>
-                        <li><i class="fa-brands fa-microsoft" style="margin-right: 8px;"></i> Microsoft Azure
-                            Fundamentals</li>
-                        <li><i class="fa-solid fa-cloud" style="margin-right: 8px;"></i> Oracle Cloud Infrastructure
-                            (OCI) x3</li>
-                    </ul>
+                    <h3>Stack Tecnológico</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px;">Google
+                            Cloud</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px;">Azure</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px;">OCI</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px;">Python</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px;">DevOps</span>
+                    </div>
                 </div>
             </div>
 
             <!-- LinkedIn - Small -->
             <a href="https://www.linkedin.com/in/fabian-arce-pereira/" target="_blank" class="bento-item item-small"
-                style="text-decoration: none; color: inherit;">
-                <i class="fa-brands fa-linkedin icon" style="color: #0077b5;"></i>
-                <div>
-                    <h3>LinkedIn</h3>
-                    <p>Conectemos</p>
+                style="text-decoration: none; color: inherit; justify-content: center; align-items: center; text-align: center;">
+                <i class="fa-brands fa-linkedin icon"
+                    style="font-size: 48px; margin-bottom: 10px; background: none; -webkit-text-fill-color: #0077b5;"></i>
+                <div style="margin-top: 10px;">
+                    <h3 style="font-size: 20px; margin: 0;">LinkedIn</h3>
+                    <p style="font-size: 14px; margin-top: 5px;">Conectar</p>
                 </div>
             </a>
 
             <!-- GitHub - Small -->
             <a href="https://github.com/fabian2ap" target="_blank" class="bento-item item-small"
-                style="text-decoration: none; color: inherit;">
-                <i class="fa-brands fa-github icon"></i>
-                <div>
-                    <h3>GitHub</h3>
-                    <p>Mi Código</p>
+                style="text-decoration: none; color: inherit; justify-content: center; align-items: center; text-align: center;">
+                <i class="fa-brands fa-github icon"
+                    style="font-size: 48px; margin-bottom: 10px; background: none; -webkit-text-fill-color: #f5f5f7;"></i>
+                <div style="margin-top: 10px;">
+                    <h3 style="font-size: 20px; margin: 0;">GitHub</h3>
+                    <p style="font-size: 14px; margin-top: 5px;">Repositorio</p>
                 </div>
             </a>
 
@@ -84,9 +91,11 @@
             <div class="bento-item item-medium" id="experience">
                 <i class="fa-solid fa-briefcase icon"></i>
                 <div>
-                    <h3>Experiencia</h3>
-                    <p>Trabajando en proyectos desafiantes, integrando soluciones en la nube y optimizando procesos en
-                        empresas líderes.</p>
+                    <h3>Experiencia Profesional</h3>
+                    <p style="margin-top: 10px; font-size: 16px;">
+                        Especialista en integración de sistemas y habilitación digital. Experiencia comprobada en
+                        entornos empresariales complejos.
+                    </p>
                 </div>
             </div>
 
@@ -108,12 +117,11 @@
                         <div class="project-card-hover"
                             style="background: linear-gradient(135deg, rgba(41, 151, 255, 0.2), rgba(41, 151, 255, 0.05)); border: 1px solid rgba(41, 151, 255, 0.3); padding: 25px; border-radius: 20px; position: relative; overflow: hidden; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
                             <div
-                                style="position: absolute; top: 0; right: 0; background: #2997ff; color: white; font-size: 11px; padding: 6px 14px; border-bottom-left-radius: 12px; font-weight: bold; letter-spacing: 0.5px;">
-                                SaaS STAR</div>
+                                style="position: absolute; top: 0; right: 0; background: #0071e3; color: white; font-size: 11px; padding: 6px 14px; border-bottom-left-radius: 12px; font-weight: 600; letter-spacing: 0.5px;">
+                                STAR PRODUCT</div>
                             <h4 style="margin: 0; font-size: 24px; color: #fff; margin-bottom: 8px;">AgendaNet Plus</h4>
-                            <p style="font-size: 15px; opacity: 0.9; margin: 0; line-height: 1.4;">La plataforma
-                                definitiva para gestión de agendas. Potencia tu negocio con nuestro SaaS inteligente.
-                            </p>
+                            <p style="font-size: 15px; opacity: 0.9; margin: 0; line-height: 1.4;">Plataforma SaaS de
+                                gestión inteligente para negocios modernos.</p>
                         </div>
                     </a>
 
@@ -124,7 +132,7 @@
                             <div class="project-card-hover"
                                 style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; height: 100%; border: 1px solid rgba(255,255,255,0.05); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
                                 <h4 style="margin: 0; font-size: 18px; color: #fff; margin-bottom: 5px;">Wellnatics</h4>
-                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">Bienestar Integral & Salud.</p>
+                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">Salud & Bienestar</p>
                             </div>
                         </a>
 
@@ -135,7 +143,7 @@
                                 style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; height: 100%; border: 1px solid rgba(255,255,255,0.05); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
                                 <h4 style="margin: 0; font-size: 18px; color: #fff; margin-bottom: 5px;">Pepona Look
                                 </h4>
-                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">E-commerce de Moda.</p>
+                                <p style="font-size: 13px; opacity: 0.7; margin: 0;">E-commerce Moda</p>
                             </div>
                         </a>
                     </div>
@@ -145,8 +153,10 @@
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px; color: var(--text-secondary); font-size: 12px;">
-        <p>&copy; 2025 Fabian Arce Pereira. Designed in Chile.</p>
+    <footer
+        style="text-align: center; padding: 60px 20px; color: var(--text-secondary); font-size: 12px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="margin-bottom: 10px;">&copy; 2025 Fabian Arce Pereira.</p>
+        <p style="opacity: 0.5;">Designed with precision in Chile.</p>
     </footer>
 
     <script>
@@ -157,10 +167,10 @@
         let particles = [];
 
         // Configuration
-        const particleCount = 60;
-        const connectionDistance = 150;
-        const moveSpeed = 0.5;
-        const colors = ['#2997ff', '#ffffff', '#86868b']; // Blue (Cloud), White, Grey
+        const particleCount = 50; // Optimized count
+        const connectionDistance = 160;
+        const moveSpeed = 0.4;
+        const colors = ['#0071e3', '#ffffff', '#86868b']; // Updated Apple Blue
 
         function resize() {
             width = canvas.width = window.innerWidth;
@@ -173,7 +183,7 @@
                 this.y = Math.random() * height;
                 this.vx = (Math.random() - 0.5) * moveSpeed;
                 this.vy = (Math.random() - 0.5) * moveSpeed;
-                this.size = Math.random() * 2 + 1;
+                this.size = Math.random() * 2 + 0.5;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -190,7 +200,9 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.6;
                 ctx.fill();
+                ctx.globalAlpha = 1;
             }
         }
 
@@ -218,21 +230,11 @@
 
                     if (dist < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(41, 151, 255, ${1 - dist / connectionDistance})`; // Blue fading
+                        ctx.strokeStyle = `rgba(0, 113, 227, ${0.15 * (1 - dist / connectionDistance)})`; // Very subtle blue connections
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
-
-                        // Occasional Data Pulse (Apigee Traffic)
-                        if (Math.random() < 0.005) {
-                            ctx.fillStyle = '#ffffff';
-                            const pulseX = particles[i].x + (particles[j].x - particles[i].x) * 0.5;
-                            const pulseY = particles[i].y + (particles[j].y - particles[i].y) * 0.5;
-                            ctx.beginPath();
-                            ctx.arc(pulseX, pulseY, 2, 0, Math.PI * 2);
-                            ctx.fill();
-                        }
                     }
                 }
             }
@@ -257,7 +259,8 @@
 
         // Simple fade-in on scroll (Intersection Observer)
         const observerOptions = {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -265,14 +268,16 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = 1;
                     entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.filter = 'blur(0)';
                 }
             });
         }, observerOptions);
 
         document.querySelectorAll('.bento-item').forEach(el => {
             el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            el.style.transform = 'translateY(30px)';
+            el.style.filter = 'blur(5px)';
+            el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease';
             observer.observe(el);
         });
     </script>
