@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.env
+
+# Flask
+instance/
+.webassets-cache
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# IDEs
+.vscode/
+.idea/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# Project specific
+Archivo.zip
