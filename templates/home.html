@@ -267,9 +267,9 @@
             ctx.clearRect(0, 0, width, height);
 
             // Draw Earth
-            const earthRadius = 60;
-            const earthX = width / 2;
-            const earthY = height / 2;
+            const earthRadius = 80;
+            const earthX = width < 768 ? width * 0.5 : width * 0.15; // Centered on mobile, top-left on desktop
+            const earthY = width < 768 ? height * 0.2 : height * 0.25;
 
             const gradient = ctx.createRadialGradient(earthX, earthY, earthRadius * 0.3, earthX, earthY, earthRadius);
             gradient.addColorStop(0, '#1a4f8a'); // Deep Ocean Blue
